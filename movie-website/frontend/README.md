@@ -19,9 +19,9 @@ Movie Master is a responsive React + Vite web app for browsing popular movies, s
 
 ## Screenshots
 
-![App Screenshot](assets/1.png)
-![App Screenshot](assets/2.png)
-![App Screenshot](/assets/3.png)
+![App Screenshot](./assets/1.png)
+![App Screenshot](.\assets\2.png)
+![App Screenshot](.\assets\3.png)
 
 ## Installation
 
