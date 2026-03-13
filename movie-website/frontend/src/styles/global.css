@@ -1,0 +1,82 @@
+/* FILE: src/styles/global.css */
+
+/* ---- Reset + Box Sizing ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Theme Variables (Dark Movie Theme) ---- */
+:root {
+  --bg: #070812;
+  --bg-alt: rgba(255, 255, 255, 0.05);
+  --panel: rgba(0, 0, 0, 0.55);
+  --border: rgba(255, 255, 255, 0.16);
+  --text: rgba(255, 255, 255, 0.92);
+  --text-muted: rgba(255, 255, 255, 0.68);
+  --text-subtle: rgba(255, 255, 255, 0.55);
+  --accent: #ff4f68;
+  --accent-2: #8159ff;
+  --accent-contrast: #0b0b12;
+  --shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  --radius: 18px;
+  --radius-sm: 12px;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --max-width: 1120px;
+  --transition: 0.25s ease;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--text);
+  background: radial-gradient(circle at top, rgba(255, 79, 104, 0.16), transparent 52%),
+    linear-gradient(180deg, #070812 0%, #05060a 70%, #030409 100%);
+  min-height: 100vh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--text);
+  font-weight: 600;
+}
+
+p {
+  margin: 0;
+  color: var(--text-muted);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  :root {
+    font-size: 15px;
+  }
+}
