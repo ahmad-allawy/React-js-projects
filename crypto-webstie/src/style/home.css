@@ -15,10 +15,52 @@
   margin-bottom: 25px;
 }
 
-/* Placeholder for future filters */
+/* Filter group container */
 .filter-group {
   display: flex;
+  align-items: center;
   gap: 10px;
+  background: #1e293b;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+/* Label */
+.filter-group label {
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+/* Select dropdown */
+.filter-group select {
+  background: #0f172a;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.2s ease, background 0.2s ease;
+}
+
+/* Hover */
+.filter-group select:hover {
+  border-color: #475569;
+}
+
+
+/* Focus */
+.filter-group select:focus {
+  border-color: #3b82f6;
+  background: #020617;
+}
+
+/* Dropdown options */
+.filter-group option {
+  background: #0f172a;
+  color: #e2e8f0;
 }
 
 /* View toggle buttons */
@@ -70,10 +112,10 @@
 
   .controls {
     flex-direction: column;
+    align-items:center;
     gap: 15px;
-    align-items: flex-end;
   }
-
+ 
   .crypto-container {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
