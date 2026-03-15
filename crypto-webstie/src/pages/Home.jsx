@@ -1,28 +1,33 @@
 import { fetchCoins } from "../api/coinGecko";
 import { useEffect, useState } from "react";
-import "../style/loading.css";
 import "../style/home.css";
 import "../style/header.css";
 import { CryptoCard } from "../components/CryptoCard";
+import { ErrorTag } from "../components/errorTag";
+import { LoadingSpinner } from "../components/loadingSpinner";
 
 function Home() {
   const [CryptoList, setCryptoList] = useState([]);
   const [filteredCryptoList, setFilteredCryptoList] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState("grid");
   const [sortOption, setSortOption] = useState("Rank");
   const [searchQuery, setSearchQuery] = useState("");
+  const [error, setError] = useState(null);
 
   const fetchCryptoData = async () => {
     try {
       const data = await fetchCoins();
       setCryptoList(data);
       setLoading(false);
+      setError(null);
     } catch (error) {
       console.error("Error fetching crypto data:", error);
       setLoading(false);
+      setError("Failed to load cryptocurrency data. Please try again later.");
     } finally {
       setLoading(false);
+     
     }
   };
 
@@ -130,11 +135,15 @@ function Home() {
           </button>
         </div>
       </div>
-      {loading ? (
-        <div className="loading">
-          <div className="spinner"></div>
-          <p>Loading cryptocurrency data...</p>
-        </div>
+
+      
+      {error && (
+        ErrorTag({ message: error })
+      )}
+      
+
+      {isLoading ? (
+        <LoadingSpinner />
       ) : (
         <div className={`crypto-container ${viewMode}`}>
           {filteredCryptoList.map((crypto) => (
