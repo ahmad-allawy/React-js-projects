@@ -2,6 +2,7 @@ import { fetchCoins } from "../api/coinGecko";
 import { useEffect, useState } from "react";
 import "../style/loading.css";
 import "../style/home.css";
+import "../style/header.css";
 import { CryptoCard } from "../components/CryptoCard";
 
 function Home() {
@@ -10,6 +11,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [viewMode, setViewMode] = useState("grid");
   const [sortOption, setSortOption] = useState("Rank");
+  const [searchQuery, setSearchQuery] = useState("");
 
   const fetchCryptoData = async () => {
     try {
@@ -28,8 +30,11 @@ function Home() {
     fetchCryptoData();
   }, []);
 
-  const sortCryptoList = (list, option) => {
-    const sortedList = [...list];
+  const sortCryptoList = (list, option, sQuery) => {
+    const sortedList = [...list].filter((crypto) =>
+      crypto.name.toLowerCase().includes(sQuery.toLowerCase()) ||
+      crypto.symbol.toLowerCase().includes(sQuery.toLowerCase())
+    );
     switch (option) {
       case "Rank":
         sortedList.sort((a, b) => a.market_cap_rank - b.market_cap_rank);
@@ -68,11 +73,30 @@ function Home() {
   };
 
   useEffect(() => {
-    setFilteredCryptoList(sortCryptoList(CryptoList, sortOption));
-  }, [CryptoList, sortOption]);
+    setFilteredCryptoList(sortCryptoList(CryptoList, sortOption, searchQuery));
+  }, [CryptoList, sortOption, searchQuery]);
 
   return (
     <div className="app">
+      <header className="header">
+        <div className="header-content">
+          <div className="logo">
+            🚀
+            <h1>Crypto Tracker</h1>
+          </div>
+          <p>Real-time cryptocurrency prices and market data</p>
+        </div>
+        <div className="search-section">
+          <input
+          className="search-input"
+            type="text"
+            placeholder="Search cryptocurrencies..."
+            onChange={(e) => setSearchQuery(e.target.value)}
+            value={searchQuery}
+          />
+        </div>
+      </header>
+
       <div className="controls">
         <div className="filter-group">
           <label>Sort by:</label>
