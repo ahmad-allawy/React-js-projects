@@ -1,0 +1,80 @@
+/* Main app container */
+.app {
+  min-height: 100vh;
+  padding: 30px;
+
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
+}
+
+/* Controls section */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Placeholder for future filters */
+.filter-group {
+  display: flex;
+  gap: 10px;
+}
+
+/* View toggle buttons */
+.view-toggle {
+  display: flex;
+  background: #1e293b;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.view-toggle button {
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.view-toggle button:hover {
+  background: #334155;
+  color: #f1f5f9;
+}
+
+.view-toggle button.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* Crypto cards container */
+.crypto-container.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+.crypto-container.list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app {
+    padding: 20px;
+  }
+
+  .controls {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-end;
+  }
+
+  .crypto-container {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
